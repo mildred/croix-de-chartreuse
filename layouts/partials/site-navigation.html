@@ -1,0 +1,39 @@
+    <nav>
+      <ul>
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.main }}
+        <li><a
+          class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{end}}"
+          href="{{ .URL }}"
+          title="{{ .Title }}">{{ .Name }}</a></li>
+      {{ end }}
+      </ul>
+      {{ $tax := .Site.GetPage "/categories" }}
+      <h1>{{ $tax.Title }}</h1>
+      <ul>
+      {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        {{ with $.Site.GetPage (printf "/%s/%s" $tax.Type $name) }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      {{ end }}
+      </ul>
+      {{ $tax := .Site.GetPage "/lieux" }}
+      <h1>{{ $tax.Title }}</h1>
+      <ul>
+      {{ range $name, $taxonomy := .Site.Taxonomies.lieux }}
+        {{ with $.Site.GetPage (printf "/%s/%s" $tax.Type $name) }}
+        {{ if eq 1 .Params.niveau}}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+        {{ end }}
+      {{ end }}
+      </ul>
+      <ul>
+        <li>Isère</li>
+        <li>Savoie</li>
+        <li>Grenoble</li>
+        <li>Chambéry</li>
+        <li>Voiron</li>
+      </ul>
+    </nav>
+

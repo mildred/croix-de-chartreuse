@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article>
+  <h1>
+    <a href="{{ .URL }}" class="link black dim">
+      {{ .Title }}
+    </a>
+  </h1>
+  <img src="{{ path.Join .URL .Params.image | relURL }}" />
+  <div>
+    {{ .Content  }}
+  </div>
+</article>
+{{ end }}
+

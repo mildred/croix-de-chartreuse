@@ -1,0 +1,32 @@
+baseURL = "http://croixdechartreuse.mildred.fr/"
+languageCode = "fr-fr"
+title = "Croix et petits monuments de Chartreuse"
+#theme = "croix-de-chartreuse"
+#theme = "croix-de-chartreuse"
+
+[taxonomies]
+  categorie = "categories"
+  lieu      = "lieux"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "accueil"
+    name       = "Accueil"
+    title      = ""
+    url        = "/"
+    weight     = -120
+
+  [[menu.main]]
+    identifier = "asso"
+    name       = "L'association"
+    title      = ""
+    url        = "/asso/"
+    weight     = -110
+
+  [[menu.main]]
+    identifier = "fiches"
+    name       = "Fiches"
+    title      = ""
+    url        = "/fiches/"
+    weight     = -100

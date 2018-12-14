@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <article>
+    <main>
+      {{- .Content -}}
+    </main>
+    <section>
+      {{ range .Paginator.Pages }}
+      <div>
+        <span>{{ humanize .Section }}</span>
+        <h1>
+          <a href="{{ .URL }}" class="link black dim">
+            {{ .Title }}
+          </a>
+        </h1>
+        <div>
+          {{ .Summary  }}
+        </div>
+          </div>
+        </div>
+      {{ end }}
+    </section>
+    {{- template "_internal/pagination.html" . -}}
+  </article>
+{{ end }}
