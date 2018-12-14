@@ -2,15 +2,13 @@ sudo: required
 dist: xenial
 services:
   - docker
-git:
-  submodules: false
 before_script:
   - echo $DEPLOY_KEY | base64 -d > id_ed25519
   - chmod 600 id_ed25519
   - eval "$(ssh-agent -s)" #start the ssh agent
   - ssh-add id_ed25519
-  - git submodule update --init || true because landing-page-hugo has infinite recursion of submodules
-  - rm -rf publish && git clone -b gh-pages git@github.com:mildred/hugo.mildred.fr.git publish
+  - git config url.ssh://git@github.com/.insteadOf https://github.com/
+  - git fetch origin empty:empty
 script:
   - pwd
   - ./build.sh

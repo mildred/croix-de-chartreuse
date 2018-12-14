@@ -4,8 +4,19 @@
       {{- .Content -}}
     </main>
     <section>
-      {{ range .Paginator.Pages }}
+      {{ $section := .Section }}
+      {{ range .Pages }}
+      {{ if eq .Section $section }}
       {{ partial "summary.html" . }}
+      {{ end }}
+      {{ end }}
+    </section>
+    <hr />
+    <section>
+      {{ range .Paginator.Pages }}
+      {{ if not (eq .Section $section) }}
+      {{ partial "summary.html" . }}
+      {{ end }}
       {{ end }}
     </section>
     {{- template "_internal/pagination.html" . -}}

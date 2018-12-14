@@ -34,7 +34,7 @@ body > header {
 
   display: grid;
   grid-template-rows: 54px 59px;
-  grid-template-columns: 10em 49px 53px auto;
+  grid-template-columns: 7em 49px 53px auto;
   grid-template-areas:
     "topleft-top logo logo header-top"
     "topleft-bottom logo logo header-bottom";
@@ -60,7 +60,7 @@ body {
   display: grid;
   min-height: 100%;
   grid-template-rows: auto auto auto;
-  grid-template-columns: 10em 49px 53px auto;
+  grid-template-columns: 7em 49px 53px auto;
   grid-template-areas:
     "header header header header"
     "menu menu content content"

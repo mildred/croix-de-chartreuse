@@ -16,4 +16,5 @@ git commit -m "$msg"
 
 # Push source and build repos.
 git remote -v
-git push origin +HEAD
+git branch
+git push origin +gh-pages
