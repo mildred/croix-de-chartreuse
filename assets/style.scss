@@ -82,3 +82,11 @@ nav {
     }
   }
 }
+
+.dialog:not(:target) {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+}

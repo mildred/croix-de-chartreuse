@@ -30,3 +30,8 @@ title = "Croix et petits monuments de Chartreuse"
     title      = ""
     url        = "/fiches/"
     weight     = -100
+
+[Params]
+  # Add staticman API URL to enable staticman comments
+  staticman_api = "https://staticman-mildred.nfshost.com/v2/entry/mildred/croix-de-chartreuse/master/comments"
+  comments = true
