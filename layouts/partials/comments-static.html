@@ -1,33 +1,21 @@
 <section class="comments">
   <h3>Comments</h3>
 
-  {{ $.Scratch.Add "hasComments" 0 }}
-  {{ $entryId := .File.BaseFileName }}
+  {{ partial "comments-static-replies" (dict "context" .) }}
 
-  {{ if not (eq nil $.Site.Data.comments) }}
-  {{ range $index, $comments := (index $.Site.Data.comments $entryId ) }}
-    {{ $.Scratch.Add "hasComments" 1 }}
-    {{ if not .reply_to }}
-      <div class="comment">
-        <div class="comment-header">
-          <img class="comment-avatar" src="https://www.gravatar.com/avatar/{{ .email }}?s=100">
-          <p class="comment-info"><strong>{{ .name }}</strong><br>{{ dateFormat "Monday, Jan 2, 2006" .date }}</p>
-        </div>
-        {{ .body | markdownify }}
-      </div>
-      <div class="comment__reply">
-        <a id="{{ ._id }}" class="btn-info" href="#comment-form" onclick="changeValue('fields[reply_to]', '{{ ._id }}')">Reply to {{ .name }}</a>
-          </div>
-      {{ partial "comments-static-replies" (dict "entryId_parent" $entryId "SiteDataComments_parent" $.Site.Data.comments "parentId" ._id "parentName" .name "context" .) }}
+  <div id="post-submitted" class="dialog">
+    <h3>Thank you</h3>
+    <p>Your post has been submitted and will be published once it has been approved.</p>
+    {{ if (.Site.Params.githubPullURL) }}
+      <p><a href="{{ .Site.Params.githubPullURL }}">Click here</a> to see the pull request you generated.</p>
     {{ end }}
-  {{ end }}
-  {{ end }}
+    <p><a href="#" class="btn">OK</a></p>
+  </div>
 
-
-  {{ if eq ($.Scratch.Get "hasComments") 0 }}
-    <p>Nothing yet.</p>
-  {{ end }}
-
-  {{ partial "comments-static-form.html" . }}
+  <div id="post-error" class="dialog">
+    <h3>OOPS!</h3>
+    <p>Your post has not been submitted.  Please return to the page and try again.  Thank You!</p>
+    <p><a href="#" class="btn">OK</a></p>
+  </div>
 
 </section>
